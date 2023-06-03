@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Connection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_no;
+    private int id;
 
     // navigational properties
     @ManyToOne
@@ -18,7 +18,7 @@ public class Connection {
     User user;
 
     public Connection(int id, ServiceProvider serviceProvider, User user) {
-        this.id_no = id;
+        this.id = id;
         this.serviceProvider = serviceProvider;
         this.user = user;
     }
@@ -27,11 +27,11 @@ public class Connection {
     }
 
     public int getId() {
-        return id_no;
+        return id;
     }
 
     public void setId(int id) {
-        this.id_no = id;
+        this.id = id;
     }
 
     public ServiceProvider getServiceProvider() {

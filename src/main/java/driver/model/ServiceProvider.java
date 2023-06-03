@@ -11,14 +11,14 @@ public class ServiceProvider {
     private int id;
 
     @Column(name = "provide_name")
-    private String Name;
+    private String name;
 
     // navigational properties
     @ManyToOne
     @JoinColumn
     Admin admin;
     @OneToMany(mappedBy = "serviceProvider",cascade = CascadeType.ALL)
-    List<Connection> listOfConnection =new ArrayList<>();
+    List<Connection> listOfConnections =new ArrayList<>();
 
     @OneToMany(mappedBy="serviceProvider",cascade = CascadeType.ALL)
     List<Country> countryList=new ArrayList<>();
@@ -29,9 +29,9 @@ public class ServiceProvider {
     // getter and setter / constructor
     public ServiceProvider(int id, String name, Admin admin, List<Connection> connections, List<Country> countries, List<User> users) {
         this.id = id;
-        this.Name = name;
+        this.name = name;
         this.admin = admin;
-        this.listOfConnection = connections;
+        this.listOfConnections = connections;
         this.countryList = countries;
         this.userList = users;
     }
@@ -48,11 +48,11 @@ public class ServiceProvider {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        this.Name = name;
+        this.name = name;
     }
 
     public Admin getAdmin() {
@@ -63,12 +63,12 @@ public class ServiceProvider {
         this.admin = admin;
     }
 
-    public List<Connection> getConnectionList() {
-        return listOfConnection;
+    public List<Connection> getListOfConnections() {
+        return listOfConnections;
     }
 
-    public void setConnectionList(List<Connection> connections) {
-        this.listOfConnection = connections;
+    public void setListOfConnections(List<Connection> connections) {
+        this.listOfConnections = connections;
     }
 
     public List<Country> getCountryList() {
