@@ -1,4 +1,4 @@
-package driver.services.impl;
+package com.driver.services.impl;
 
 import com.driver.model.*;
 import com.driver.repository.ConnectionRepository;
@@ -34,7 +34,7 @@ public class ConnectionServiceImpl implements ConnectionService {
             throw new Exception("Already connected");
         }
 
-        if (countryName.equalsIgnoreCase(user.getOriginalCountry().getCountryName().toString())){
+        if (countryName.equalsIgnoreCase(user.getOriginalCountry().getNameOfCountry().toString())){
             return user;
         }
 
@@ -49,7 +49,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         for (ServiceProvider serviceProvider : serviceProviderList){
             List<Country> countryList = serviceProvider.getCountryList();
             for (Country country1 : countryList){
-                if (countryName.equalsIgnoreCase(country1.getCountryName().toString()) && lowestId>serviceProvider.getId()){
+                if (countryName.equalsIgnoreCase(country1.getNameOfCountry().toString()) && lowestId>serviceProvider.getId()){
                     lowestId = serviceProvider.getId();
                     serviceProviderWithLowestId = serviceProvider;
                     country = country1;
@@ -118,7 +118,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         if (sender.getOriginalCountry().equals(receiver.getOriginalCountry())){
             return sender;
         }
-        String countryName = receiver.getOriginalCountry().getCountryName().toString();
+        String countryName = receiver.getOriginalCountry().getNameOfCountry().toString();
         try {
             sender = connect(senderId,countryName);
         }catch (Exception e){

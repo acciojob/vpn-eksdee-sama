@@ -1,4 +1,4 @@
-package driver.model;
+package com.driver.model;
 
 public enum CountryName {
     IND("001"),
