@@ -4,26 +4,26 @@ import javax.persistence.*;
 
 @Entity
 public class Connection {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    // navigational properties
     @ManyToOne
     @JoinColumn
-    ServiceProvider serviceProvider;
+    private ServiceProvider serviceProvider;
 
     @ManyToOne
     @JoinColumn
-    User user;
+    private User user;
+
+    public Connection() {
+    }
 
     public Connection(int id, ServiceProvider serviceProvider, User user) {
         this.id = id;
         this.serviceProvider = serviceProvider;
         this.user = user;
-    }
-
-    public Connection() {
     }
 
     public int getId() {
